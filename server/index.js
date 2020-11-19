@@ -26,12 +26,7 @@ app.get('/dogs', async (req, res, next) => {
 
 app.get('/first-dog', async (req, res, next) => {
     try {
-        const firstDog = await Dog.findByPk(
-            1,
-            {
-                include: Owner
-            }
-        );
+        const firstDog = await Dog.findByPk(1);
         firstDog.sayHello();
         res.send(formatDog(firstDog));
     } catch (err) {
