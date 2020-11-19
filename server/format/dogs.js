@@ -2,7 +2,7 @@ const formatDog = (dog) => {
   const dogOwnersExist = dog.owners && dog.owners.length > 0;
   return `<div> Name: ${dog.name}</div>
   <div> Age: ${dog.age}</div>
-  ${dogOwnersExist ? `<div> Owner(s): ${dog.owners.map((owner) => owner.name)} </div>` : 'No Owner :('}
+  ${dogOwnersExist ? `<div> Owner(s): ${dog.owners.map((owner) => owner.name)} </div>` : '<div>No Owner :(</div>'}
   <img src="${dog.picture}">`
 }
 

@@ -35,6 +35,7 @@ app.get('/first-dog', async (req, res, next) => {
 app.get('/owners', async (req, res, next) => {
     try {
          const owners = await Owner.findAll()
+         console.log(owners);
          res.send(formatOwners(owners))
     } catch(err) {
         next(err)
