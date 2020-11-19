@@ -1,0 +1,20 @@
+{
+  "name": "intro-to-orms-demo",
+  "version": "1.0.0",
+  "description": "\"# intro-to-orms-demo\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./server/index.js",
+    "seed": "node seed.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "pg": "^8.5.1",
+    "sequelize": "^5.21.5"
+  },
+  "keywords": []
+}
