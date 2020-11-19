@@ -12,11 +12,9 @@ app.get('/', async (req, res, next) => {
     res.send("<h1> Welcome to the main route! </h1>")
 })
 
-//EAGER LOADING just means "join"
-//select * from users join dogs on dogs.ownerId = owners.id
 app.get('/dogs', async (req, res, next) => {
     try {
-        const dogs = await Dog.findAll({include: Owner})
+        const dogs = await Dog.findAll()
         dogs[0].sayHello()
         res.send(formatDogs(dogs))
     } catch(err) {
