@@ -1,10 +1,9 @@
 const express = require('express')
 const app = express()
 const port = 3000
-const Sequelize = require('sequelize')
 const morgan = require('morgan')
-const {db, Dog, Owner} = require('./database/db.js')
-const {formatDog, formatDogs} = require('./format/dogs')
+const {Dog, Owner} = require('./database/db.js')
+const {formatDogs} = require('./format/dogs')
 const formatOwners = require('./format/owners');
 
 app.use(morgan('dev'))

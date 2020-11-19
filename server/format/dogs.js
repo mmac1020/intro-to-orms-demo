@@ -6,6 +6,7 @@ const formatDog = (dog) => {
 }
 
 const formatDogs = (dogs) => {
+  console.log(dogs.owners);
   return `<h1> All dogs!!! </h1>
   <div>
     ${dogs.map((dog) => formatDog(dog))}

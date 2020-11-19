@@ -34,10 +34,12 @@ Dog.prototype.sayHello = function () {
 //Class Method
 Dog.getPuppies = async function () {
     const puppies = await Dog.findAll({
+        include: Owner,
         where: {
             age: {[Op.lte]: 1}}
-    })
-    return kittens
+        }
+    )
+    return puppies
 }
 
 module.exports = {
