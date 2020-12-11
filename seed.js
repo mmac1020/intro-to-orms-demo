@@ -36,9 +36,9 @@ const seed = async () => {
         name: 'Mary',
         picture: 'https://ca.slack-edge.com/T024FPYBQ-U011VB93SNS-583a430104ad-512'
     })
-    dog1.setOwners(owner1)
-    dog1.setOwners(owner2)
-    dog3.setOwners(owner3)
+    await dog1.setOwners(owner1)
+    await dog1.setOwners(owner2)
+    await dog3.setOwners(owner3)
 
     //MAGIC METHODS
     console.log(dog1.__proto__) //displays magic methods!
