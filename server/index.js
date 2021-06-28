@@ -16,7 +16,11 @@ app.get('/', async (req, res, next) => {
 //select * from users join dogs on dogs.ownerId = owners.id
 app.get('/dogs', async (req, res, next) => {
   try {
-    const dogs = await Dog.findAll({ include: Owner });
+    // This dogs is an array
+    const dogs = await Dog.findAll({
+      include: [{ model: Owner, as: 'owners' }],
+    });
+    dogs.forEach((dog) => dog.owners)
     dogs[0].sayHello();
     res.send(formatDogs(dogs));
   } catch (err) {
@@ -36,16 +40,20 @@ app.get('/owners', async (req, res, next) => {
 app.get('/puppies', async (req, res, next) => {
   try {
     const puppies = await Dog.getPuppies();
+    // throw new Error('Something I did was bad');
     res.send(formatDogs(puppies));
   } catch (err) {
+    console.log('This error happened in the /puppies route');
     next(err);
   }
 });
 
+// 404 Error handler
 app.use((req, res) => {
   res.status(404).send('404 NOT FOUND :( ');
 });
 
+// Custom error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('500 ERROR BOO :(');
