@@ -1,4 +1,4 @@
-const { db, Dog, Owner } = require('./server/database/db');
+const { db, Dog, Owner } = require('./server/database');
 
 const seed = async () => {
   await db.sync({ force: true });
