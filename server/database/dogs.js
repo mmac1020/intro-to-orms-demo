@@ -9,12 +9,16 @@ const Dog = db.define('dogs', {
 });
 
 //instance method
+// const dogs = Dog.findAll();
+// I need to retrieve an instance from the database to use these methods
+// dogs[0].sayHello();
 Dog.prototype.sayHello = function () {
   console.log(`${this.name} says Hello!!!!`);
 };
 
 //Class Method
-Dog.getPuppies = async function () {
+// await Dog.getPuppies();
+Dog.getPuppies = function () {
   return Dog.findAll({
     include: Owner,
     where: {
@@ -23,4 +27,7 @@ Dog.getPuppies = async function () {
   });
 };
 
+// How do we require this Dog
+// Default export.
+// const Dog = require('filePath');
 module.exports = Dog;

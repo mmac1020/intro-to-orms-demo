@@ -7,12 +7,15 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// This will try to link to ./api/index.js
 app.use('/api', require('./api'));
 
+// 404 error handler
 app.use((req, res) => {
   res.status(404).send('404 NOT FOUND :( ');
 });
 
+// Custom error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('500 ERROR BOO :(');

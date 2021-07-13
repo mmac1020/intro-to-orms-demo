@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { Dog, Owner } = require('../database');
 
+// Every route in my dog file starts with /api/dogs
+
 //EAGER LOADING just means "join"
 //select * from users join dogs on dogs.ownerId = owners.id
 router.get('/', async (req, res, next) => {

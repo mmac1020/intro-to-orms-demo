@@ -1,8 +1,19 @@
 const { db, Dog, Owner } = require('./server/database');
+/**
+ * Dog:
+ *   name: Sequelize.STRING,
+    age: Sequelize.DOUBLE,
+    picture: Sequelize.STRING,
 
+  Owner:
+    name: Sequelize.STRING,
+    picture: Sequelize.STRING,
+
+ */
 const seed = async () => {
+  // Let's connect to the database and make sure our models are setup correctly
+  // force: true says, delete everything in the database and we'll repopulate it
   await db.sync({ force: true });
-  console.log('DB synced!!!');
   const dog1 = await Dog.create({
     name: 'Charlie',
     age: 1,
@@ -38,12 +49,13 @@ const seed = async () => {
     name: 'Mary',
     picture: 'https://ca.slack-edge.com/T024FPYBQ-U011VB93SNS-583a430104ad-512',
   });
-  await dog1.setOwners(owner1);
-  await dog1.setOwners(owner2);
-  await dog3.setOwners(owner3);
 
-  //MAGIC METHODS
-  console.log(dog1.__proto__); //displays magic methods!
+  console.log(Object.getPrototypeOf(dog3)); // This will log our magic methods out
+  await dog1.setOwners(owner1);
+  await dog2.setOwners([owner1, owner2]);
+  await dog3.setOwners(owner3);
+  // This cleanly disconnects from the database
+  await db.close();
 };
 
 seed();
