@@ -3,6 +3,8 @@ const app = express();
 const port = 3000;
 const morgan = require('morgan');
 
+const { db, Dog, Owner } = require('./database/db');
+
 app.use(morgan('dev'));
 
 app.get('/', async (req, res, next) => {
@@ -18,4 +20,8 @@ app.use((err, req, res, next) => {
   res.status(500).send('500 ERROR BOO :(');
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, async () => {
+  // force: true drops the tables and re-creates them
+  await db.sync();
+  console.log(`Example app listening on port ${port}!`);
+});
