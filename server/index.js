@@ -4,10 +4,10 @@ const port = 3000;
 const morgan = require('morgan');
 
 app.use(morgan('dev'));
-app.use(express.json());
+// app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// This will try to link to ./api/index.js
+// For all request that start with /api, go to the ./api file
 app.use('/api', require('./api'));
 
 // 404 error handler

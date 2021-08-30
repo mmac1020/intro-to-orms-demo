@@ -8,15 +8,15 @@ const Dog = db.define('dogs', {
   picture: Sequelize.STRING,
 });
 
-//instance method
-// const dogs = Dog.findAll();
-// I need to retrieve an instance from the database to use these methods
-// dogs[0].sayHello();
+// Sequelize instance method
+// How do I access this?
+// const dog = Dog.findByPk(pk);
+// dog.sayHello();
 Dog.prototype.sayHello = function () {
   console.log(`${this.name} says Hello!!!!`);
 };
 
-//Class Method
+// Sequelize Class Method
 // await Dog.getPuppies();
 Dog.getPuppies = function () {
   return Dog.findAll({
@@ -27,7 +27,34 @@ Dog.getPuppies = function () {
   });
 };
 
+// How do we hit this hook?
+// dogInstance.update()
+Dog.beforeUpdate((instance) => {
+  console.log('inside the before update hook!');
+});
+
+// How about this one?
+// Dog.update() --- This is a BULK UPDATE
+// Model.update(updateToApply, query)
+// Dog.update(dogUpdate,
+//   {
+//     where: {
+//       age: {
+//         [Sequelize.Op.GTE]: 2
+//       }
+//     }
+//   }
+// )
+Dog.beforeBulkUpdate((instance) => {
+  console.log('inside the before bulk update hook!');
+});
+
+Dog.beforeSave((instance) => {
+  console.log('inside the before save hook!');
+});
+
 // How do we require this Dog
-// Default export.
-// const Dog = require('filePath');
+// What is this export?
+// This is the DEFAULT EXPORT
+// const Dog = require('path')
 module.exports = Dog;

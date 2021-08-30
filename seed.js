@@ -52,6 +52,10 @@ const seed = async () => {
 
   console.log(Object.getPrototypeOf(dog3)); // This will log our magic methods out
   await dog1.setOwners(owner1);
+  // "add" method -- adds or appends
+  // dog.owners.push([owner1, owner2]);
+  // "set" method -- reassigns
+  // dog.owners = [owner1, owner2]
   await dog2.setOwners([owner1, owner2]);
   await dog3.setOwners(owner3);
   // This cleanly disconnects from the database
