@@ -1,9 +1,9 @@
 const db = require('./db')
-const Dogs = require('./dogs');
-const Owners = require('./owners');
+const Dog = require('./dogs');
+const Owner = require('./owners');
 
 module.exports = {
   db,
-  Dogs,
-  Owners
+  Dog,
+  Owner
 }
