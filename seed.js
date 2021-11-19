@@ -43,7 +43,10 @@ const seed = async () => {
   await dog3.setOwners(owner3);
 
   //MAGIC METHODS
-  console.log(dog1.__proto__); //displays magic methods!
+  console.log(Object.getPrototypeOf(owner1)); //displays magic methods!
+
+  // Close our connection to the db
+  await db.close();
 };
 
 seed();
