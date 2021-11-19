@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const {Dogs} = require('../database')
+const {formatDog, formatDogs} = require('../format/dogs')
 
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
   try {
-    const dogs = await Dog.findAll();
+    const dogs = await Dogs.findAll();
     res.send(formatDogs(dogs));
   } catch (err) {
     next(err);
