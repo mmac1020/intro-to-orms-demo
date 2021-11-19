@@ -3,6 +3,7 @@ const router = express.Router();
 const {Owner} = require('../database')
 const formatOwners = require('../format/owners')
 
+// /tricky-first-route/owners/api/owners
 router.get('/', async (req, res, next) => {
   try {
     const owners = await Owner.findAll();
