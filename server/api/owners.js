@@ -1,13 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const {Owner} = require('../database')
-const formatOwners = require('../format/owners')
+const router = require('express').Router();
+const { Owner } = require('../database');
 
-// /tricky-first-route/owners/api/owners
 router.get('/', async (req, res, next) => {
   try {
     const owners = await Owner.findAll();
-    res.send(formatOwners(owners));
+    res.json(owners);
   } catch (err) {
     next(err);
   }

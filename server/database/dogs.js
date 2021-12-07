@@ -8,12 +8,6 @@ const Dog = db.define('dogs', {
     picture: Sequelize.STRING
 })
 
-const mac = {name: 'whatever'}
-
-mac.classMethod = function() {
-    // do something
-}
-
 // Class and instance methods
 
 // Class Methods:
