@@ -5,6 +5,10 @@ const morgan = require('morgan');
 
 app.use(morgan('dev'));
 
+app.use(express.json());
+
+// app.use(express.urlencoded())
+
 app.get('/', async (req, res, next) => {
   res.send('<h1> Welcome to the main route! </h1>');
 });
