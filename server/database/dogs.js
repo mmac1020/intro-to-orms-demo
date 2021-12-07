@@ -2,6 +2,8 @@ const Sequelize = require('sequelize')
 const db = require('./db');
 const {Owner} = require('./')
 
+// What if I want name to be not an empty string or null?
+// What if I want to default my picture to a cute lil puppy
 const Dog = db.define('dogs', {
     name: Sequelize.STRING,
     age: Sequelize.DOUBLE,
@@ -13,23 +15,12 @@ const Dog = db.define('dogs', {
 // Class Methods:
 // Class methods are good for when you want to re-use queries
 Dog.getPuppies = async function() {
-    // 'this' is the Dog class itself
-    return this.findAll(
-        {
-            include: Owner,
-            where: {
-                age: {
-                    [Sequelize.Op.lte]: 1
-                }
-            }
-        }
-    )
+    // I want to return all dogs that are 1 or younger
 }
 
 // Instance method
 Dog.prototype.sayHello = function() {
-    // 'this' is the individual dog we're accessing
-    console.log(`${this.name} says hello`)
+    // I want to console log the dog's name saying hello
 }
 
 module.exports = Dog;
